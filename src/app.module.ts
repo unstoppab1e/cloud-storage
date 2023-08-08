@@ -8,6 +8,7 @@ import { UserEntity } from './users/entities/user.entity';
 import { FileEntity } from './files/entities/file.entity';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { IamModule } from './iam/iam.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     FilesModule,
     AuthModule,
+    IamModule,
   ],
   controllers: [AppController],
   providers: [AppService],
