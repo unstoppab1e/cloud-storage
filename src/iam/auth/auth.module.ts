@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
-import { HashingService } from './hashing/hashing.service';
-import { BcryptService } from './hashing/bcrypt.service';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from 'src/users/entities/user.entity';
-import { AuthService } from './auth/auth.service';
-import { AuthController } from './auth/auth.controller';
+import { HashingService } from '../hashing/hashing.service';
+import { BcryptService } from '../hashing/bcrypt.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserEntity])],
+  controllers: [AuthController],
   providers: [
     {
       provide: HashingService,
@@ -15,6 +16,5 @@ import { AuthController } from './auth/auth.controller';
     },
     AuthService,
   ],
-  controllers: [AuthController],
 })
-export class IamModule {}
+export class AuthModule {}
